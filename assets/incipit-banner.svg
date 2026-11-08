@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 560" width="1600" height="560" role="img" aria-labelledby="bannerTitle">
+  <title id="bannerTitle">THE FRAGMENT · 残卷</title>
+  <defs>
+    <linearGradient id="paper" x1="0" y1="0" x2="0.35" y2="1">
+      <stop offset="0" stop-color="#1a150d"/>
+      <stop offset="0.46" stop-color="#110e09"/>
+      <stop offset="1" stop-color="#0c0a07"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#f4ead6"/>
+      <stop offset="0.38" stop-color="#e7d3a8"/>
+      <stop offset="0.62" stop-color="#c9a86a"/>
+      <stop offset="1" stop-color="#f0e3c8"/>
+    </linearGradient>
+    <radialGradient id="topglow" cx="0.5" cy="0" r="0.8">
+      <stop offset="0" stop-color="#2a2113" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#2a2113" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="halo" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#c9a86a" stop-opacity="0.10"/>
+      <stop offset="1" stop-color="#c9a86a" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="soft40" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="40"/>
+    </filter>
+    <filter id="soft14" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="14"/>
+    </filter>
+    <pattern id="grain" width="4" height="4" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0.5" x2="4" y2="0.5" stroke="#ffffff" stroke-opacity="0.018"/>
+      <line x1="0" y1="2.5" x2="4" y2="2.5" stroke="#000000" stroke-opacity="0.10"/>
+    </pattern>
+    <clipPath id="torn">
+      <polygon points="
+        40,52 120,36 210,54 310,34 420,50 520,36 640,52 760,34 880,50
+        1000,36 1120,52 1240,34 1360,50 1460,36 1560,50
+        1556,140 1562,230 1554,320 1560,410 1556,508
+        1460,524 1360,506 1240,522 1120,508 1000,524 880,508 760,524
+        640,508 520,522 420,506 310,524 210,508 120,522 40,508
+        44,410 38,320 46,230 40,140
+      "/>
+    </clipPath>
+  </defs>
+
+  <rect width="1600" height="560" fill="#080706"/>
+  <ellipse cx="800" cy="20" rx="760" ry="300" fill="url(#topglow)"/>
+  <ellipse cx="1420" cy="540" rx="460" ry="240" fill="#140f08" opacity="0.85"/>
+
+  <g clip-path="url(#torn)">
+    <rect x="0" y="0" width="1600" height="560" fill="url(#paper)"/>
+    <rect x="0" y="0" width="1600" height="560" fill="url(#grain)"/>
+
+    <ellipse cx="1280" cy="110" rx="170" ry="100" fill="#7a502d" opacity="0.10" filter="url(#soft40)"/>
+    <ellipse cx="240" cy="430" rx="150" ry="95" fill="#6e4a2a" opacity="0.10" filter="url(#soft40)"/>
+    <ellipse cx="1450" cy="470" rx="120" ry="150" fill="#000000" opacity="0.28" filter="url(#soft40)"/>
+    <ellipse cx="800" cy="270" rx="470" ry="230" fill="url(#halo)"/>
+
+    <line x1="36" y1="404" x2="1564" y2="376" stroke="#000000" stroke-opacity="0.55"/>
+    <line x1="36" y1="403" x2="1564" y2="375" stroke="#c9a86a" stroke-opacity="0.10"/>
+
+    <rect x="74" y="84" width="1452" height="392" fill="none" stroke="#c9a86a" stroke-opacity="0.12"/>
+    <path d="M74 108 L74 84 L98 84" fill="none" stroke="#c9a86a" stroke-opacity="0.34"/>
+    <path d="M1526 452 L1526 476 L1502 476" fill="none" stroke="#c9a86a" stroke-opacity="0.34"/>
+
+    <text x="800" y="266" text-anchor="middle"
+          font-family="Georgia, 'Times New Roman', serif" font-size="104"
+          letter-spacing="16" fill="url(#gold)">THE FRAGMENT</text>
+
+    <text x="800" y="352" text-anchor="middle"
+          font-family="'Songti SC', 'STSong', 'Noto Serif CJK SC', 'SimSun', serif"
+          font-size="34" letter-spacing="22" fill="#c9a86a" fill-opacity="0.92">残 卷</text>
+
+    <line x1="560" y1="398" x2="772" y2="398" stroke="#c9a86a" stroke-opacity="0.34"/>
+    <line x1="828" y1="398" x2="1040" y2="398" stroke="#c9a86a" stroke-opacity="0.34"/>
+    <rect x="793" y="391" width="14" height="14" transform="rotate(45 800 398)"
+          fill="none" stroke="#c9a86a" stroke-opacity="0.66"/>
+
+    <text x="800" y="446" text-anchor="middle"
+          font-family="Georgia, 'Times New Roman', serif" font-size="12"
+          letter-spacing="7" fill="#8a7d68">A COVER FOR THREE READINGS · 为三次阅读所作的封面</text>
+
+    <text x="98" y="470" font-family="Georgia, serif" font-size="10"
+          letter-spacing="4" fill="#c9a86a" fill-opacity="0.30">FRAGMENTUM</text>
+    <text x="1502" y="470" text-anchor="end" font-family="Georgia, serif" font-size="10"
+          letter-spacing="4" fill="#c9a86a" fill-opacity="0.30">EX PARTE</text>
+  </g>
+
+  <g fill="#e4c68c">
+    <circle cx="120" cy="300" r="1.6" opacity="0.34"/>
+    <circle cx="205" cy="190" r="1.1" opacity="0.22"/>
+    <circle cx="286" cy="360" r="1.4" opacity="0.26"/>
+    <circle cx="352" cy="128" r="0.9" opacity="0.18"/>
+    <circle cx="438" cy="470" r="1.7" opacity="0.30"/>
+    <circle cx="512" cy="240" r="1.0" opacity="0.20"/>
+    <circle cx="596" cy="140" r="1.3" opacity="0.24"/>
+    <circle cx="664" cy="330" r="1.8" opacity="0.28"/>
+    <circle cx="742" cy="470" r="1.0" opacity="0.17"/>
+    <circle cx="820" cy="170" r="1.2" opacity="0.22"/>
+    <circle cx="902" cy="360" r="1.5" opacity="0.26"/>
+    <circle cx="978" cy="220" r="0.9" opacity="0.18"/>
+    <circle cx="1052" cy="470" r="1.6" opacity="0.30"/>
+    <circle cx="1130" cy="300" r="1.1" opacity="0.21"/>
+    <circle cx="1208" cy="160" r="1.3" opacity="0.24"/>
+    <circle cx="1286" cy="390" r="1.7" opacity="0.29"/>
+    <circle cx="1364" cy="240" r="1.0" opacity="0.19"/>
+    <circle cx="1442" cy="330" r="1.4" opacity="0.27"/>
+    <circle cx="1510" cy="190" r="0.9" opacity="0.17"/>
+    <circle cx="168" cy="500" r="1.2" opacity="0.20"/>
+    <circle cx="410" cy="60" r="1.0" opacity="0.16"/>
+    <circle cx="690" cy="520" r="0.9" opacity="0.15"/>
+    <circle cx="960" cy="70" r="1.1" opacity="0.17"/>
+    <circle cx="1250" cy="520" r="1.3" opacity="0.20"/>
+    <circle cx="1490" cy="80" r="0.9" opacity="0.15"/>
+  </g>
+</svg>
