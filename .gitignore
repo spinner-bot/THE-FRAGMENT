@@ -1,0 +1,6 @@
+# Local conversation exports may contain puzzle answers and keys.
+reference/*
+!reference/README.md
+
+__pycache__/
+*.pyc
