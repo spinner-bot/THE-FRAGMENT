@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>THE FRAGMENT · 残卷</title>
+<style>
+  :root{
+    --ink:#080706;
+    --paper:#efe5d3;
+    --paper-dim:#b6a88f;
+    --gold:#c9a86a;
+    --gold-soft:rgba(201,168,106,.45);
+    --rust:#8f6047;
+    --line:rgba(201,168,106,.18);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  html{background:var(--ink)}
+  body{
+    background:
+      radial-gradient(1200px 820px at 50% -12%, #1b150c 0%, transparent 62%),
+      radial-gradient(900px 620px at 104% 112%, #140f08 0%, transparent 58%),
+      radial-gradient(700px 500px at -8% 30%, #100d08 0%, transparent 55%),
+      var(--ink);
+    color:var(--paper);
+    font-family:Georgia,"Times New Roman","Songti SC","STSong","Noto Serif CJK SC","SimSun",serif;
+    overflow-x:hidden;
+    min-height:100vh;
+  }
+
+  /* ——— fixed plate frame ——— */
+  .plate{
+    position:fixed;inset:16px;z-index:6;pointer-events:none;
+    border:1px solid rgba(201,168,106,.10);
+  }
+  .plate::before,.plate::after{
+    content:"";position:absolute;width:26px;height:26px;
+    border:1px solid rgba(201,168,106,.35);
+  }
+  .plate::before{left:-1px;top:-1px;border-right:0;border-bottom:0}
+  .plate::after{right:-1px;bottom:-1px;border-left:0;border-top:0}
+  .plate span{position:absolute;color:rgba(201,168,106,.30);font-size:10px;letter-spacing:.3em}
+  .plate span.tl{left:14px;top:8px}
+  .plate span.br{right:14px;bottom:8px}
+
+  /* ——— dust ——— */
+  .dust{position:fixed;inset:0;z-index:5;pointer-events:none;overflow:hidden}
+  .dust i{
+    position:absolute;left:var(--x);top:112%;
+    width:var(--s);height:var(--s);border-radius:50%;
+    background:radial-gradient(circle, rgba(228,198,140,.95) 0%, rgba(228,198,140,0) 72%);
+    opacity:0;
+    animation:float var(--d) linear infinite;
+    animation-delay:var(--delay);
+    filter:blur(.2px);
+  }
+  @keyframes float{
+    0%{transform:translate3d(0,0,0);opacity:0}
+    9%{opacity:var(--o)}
+    86%{opacity:calc(var(--o) * .55)}
+    100%{transform:translate3d(var(--dx),-118vh,0);opacity:0}
+  }
+
+  /* ——— sheet ——— */
+  .sheet{
+    position:relative;z-index:2;
+    width:min(880px, calc(100% - 40px));
+    margin:7vh auto 11vh;
+    padding:clamp(64px,9vw,104px) clamp(26px,8vw,88px) clamp(56px,7vw,78px);
+  }
+  .paper{
+    position:absolute;inset:0;z-index:0;
+    background:
+      radial-gradient(120% 90% at 50% 0%, rgba(46,37,22,.55) 0%, transparent 52%),
+      linear-gradient(158deg, #16120b 0%, #100d08 46%, #0c0a07 100%);
+    clip-path:polygon(
+      0% 1.4%, 4% .6%, 9% 1.5%, 15% .5%, 22% 1.2%, 30% .4%, 38% 1.3%,
+      46% .6%, 55% 1.4%, 63% .5%, 71% 1.3%, 79% .6%, 87% 1.4%, 94% .7%, 100% 1.2%,
+      99.4% 12%, 100% 25%, 99.3% 40%, 100% 55%, 99.5% 70%, 100% 84%, 99.2% 98.6%,
+      94% 99.4%, 87% 98.6%, 79% 99.5%, 71% 98.7%, 63% 99.6%, 55% 98.6%, 46% 99.4%,
+      38% 98.7%, 30% 99.6%, 22% 98.8%, 15% 99.5%, 9% 98.6%, 4% 99.4%, 0% 98.8%,
+      .6% 84%, 0% 70%, .5% 55%, 0% 40%, .7% 25%, 0% 12%
+    );
+    box-shadow:0 30px 80px rgba(0,0,0,.65), inset 0 0 140px rgba(0,0,0,.55);
+  }
+  .paper::before{
+    content:"";position:absolute;inset:0;
+    background:
+      repeating-linear-gradient(0deg, rgba(255,255,255,.014) 0 1px, transparent 1px 4px),
+      repeating-linear-gradient(90deg, rgba(0,0,0,.16) 0 1px, transparent 1px 3px);
+    mix-blend-mode:overlay;opacity:.55;
+  }
+  .paper::after{
+    content:"";position:absolute;inset:0;
+    background:
+      radial-gradient(120px 90px at 82% 12%, rgba(122,80,45,.20), transparent 70%),
+      radial-gradient(90px 70px at 12% 74%, rgba(110,74,42,.16), transparent 70%),
+      radial-gradient(70px 120px at 92% 86%, rgba(0,0,0,.35), transparent 70%);
+    mix-blend-mode:multiply;
+  }
+  .crease{
+    position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden;
+  }
+  .crease::before{
+    content:"";position:absolute;left:-20%;top:58%;width:140%;height:1px;
+    background:linear-gradient(90deg,transparent,rgba(201,168,106,.16) 18%,rgba(0,0,0,.6) 50%,rgba(201,168,106,.10) 82%,transparent);
+    transform:rotate(-3.4deg);
+    box-shadow:0 1px 0 rgba(0,0,0,.55), 0 -1px 0 rgba(230,210,170,.05);
+  }
+  .crease::after{
+    content:"";position:absolute;right:8%;top:-10%;width:1px;height:120%;
+    background:linear-gradient(180deg,transparent,rgba(201,168,106,.12) 40%,transparent);
+    transform:rotate(1.2deg);
+  }
+
+  .content{position:relative;z-index:2}
+
+  .marginalia{
+    position:absolute;right:calc(clamp(10px,4vw,34px) * -0.2);top:120px;
+    writing-mode:vertical-rl;font-size:10px;letter-spacing:.42em;
+    color:rgba(201,168,106,.34);user-select:none;
+  }
+
+  /* ——— header ——— */
+  .kicker{
+    font-size:11px;letter-spacing:.46em;text-transform:uppercase;
+    color:var(--paper-dim);margin:0 0 26px;
+    opacity:0;animation:rise 1.3s .1s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  h1{
+    margin:0;font-weight:400;line-height:.98;
+    font-size:clamp(46px,9.4vw,104px);
+    letter-spacing:.16em;
+    color:#f3ead8;
+    text-shadow:0 0 34px rgba(201,168,106,.14);
+    animation:breathe 7s ease-in-out infinite;
+  }
+  h1 span{
+    display:block;
+  }
+  h1 .gilded{
+    background:linear-gradient(92deg,#f4ead6 0%,#e7d3a8 38%,#c9a86a 62%,#f0e3c8 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  @keyframes breathe{
+    0%,100%{text-shadow:0 0 26px rgba(201,168,106,.10)}
+    50%{text-shadow:0 0 48px rgba(201,168,106,.22)}
+  }
+  .zh-title{
+    margin:22px 0 0;
+    font-size:clamp(20px,3.6vw,32px);
+    letter-spacing:1.05em;
+    color:var(--gold);
+    font-weight:400;
+    opacity:0;animation:rise 1.4s .4s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .rule{
+    display:flex;align-items:center;gap:18px;
+    margin:44px 0 56px;
+    opacity:0;animation:rise 1.4s .55s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .rule::before,.rule::after{
+    content:"";flex:1;height:1px;
+    background:linear-gradient(90deg,transparent,var(--gold-soft),transparent);
+  }
+  .rule i{
+    width:7px;height:7px;transform:rotate(45deg);
+    border:1px solid rgba(201,168,106,.75);
+    box-shadow:0 0 14px rgba(201,168,106,.25);
+  }
+
+  .epigraph{
+    margin:0 0 62px;padding:0 0 0 22px;
+    border-left:1px solid rgba(201,168,106,.28);
+    opacity:0;animation:rise 1.5s .7s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .epigraph p{margin:0}
+  .epigraph .en{
+    font-style:italic;font-size:clamp(16px,2vw,19px);line-height:1.8;
+    color:#d9cdb8;
+  }
+  .epigraph .zh{
+    margin-top:8px;font-size:clamp(14px,1.8vw,17px);line-height:2;
+    color:#9d907a;letter-spacing:.06em;
+  }
+
+  /* ——— passages ——— */
+  .passage{
+    position:relative;
+    margin:0 0 54px;
+    opacity:0;
+    animation:rise 1.5s var(--d) cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .passage .num{
+    display:block;
+    font-size:11px;letter-spacing:.5em;color:rgba(201,168,106,.72);
+    margin:0 0 14px;
+    transform:translateX(-2px);
+  }
+  .passage .num::after{
+    content:"";display:inline-block;width:38px;height:1px;margin-left:16px;
+    background:linear-gradient(90deg,rgba(201,168,106,.45),transparent);
+    vertical-align:middle;
+  }
+  .en{
+    margin:0 0 12px;
+    font-size:clamp(17px,2.15vw,21.5px);
+    line-height:1.86;
+    letter-spacing:.005em;
+    color:#efe6d4;
+    transition:color .6s ease;
+  }
+  .zh{
+    margin:0;
+    font-size:clamp(15px,1.9vw,18px);
+    line-height:2.05;
+    letter-spacing:.055em;
+    color:#b2a58c;
+    transition:color .6s ease;
+  }
+  .passage:hover .en{color:#fff7e9}
+  .passage:hover .zh{color:#c9bca2}
+
+  .passage.lead .en::first-letter{
+    float:left;
+    font-size:3.55em;
+    line-height:.82;
+    padding:.06em .12em 0 0;
+    color:var(--gold);
+    text-shadow:0 0 24px rgba(201,168,106,.18);
+  }
+
+  /* ——— coda ——— */
+  .coda{
+    margin:82px 0 0;
+    text-align:center;
+    opacity:0;animation:rise 1.7s 2.1s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .coda .en{
+    font-style:italic;font-size:clamp(18px,2.4vw,24px);
+    letter-spacing:.06em;color:#e6d9c2;
+  }
+  .coda .zh{
+    margin-top:10px;font-size:clamp(15px,1.9vw,18px);letter-spacing:.16em;color:#a3967d;
+  }
+  .coda .mark{
+    display:block;width:5px;height:5px;margin:34px auto 0;
+    transform:rotate(45deg);border:1px solid rgba(201,168,106,.55);
+  }
+
+  footer{
+    margin-top:48px;
+    display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
+    font-size:10px;letter-spacing:.34em;color:rgba(201,168,106,.34);
+    text-transform:uppercase;
+  }
+
+  @keyframes rise{
+    from{opacity:0;transform:translateY(16px);filter:blur(4px)}
+    to{opacity:1;transform:translateY(0);filter:blur(0)}
+  }
+
+  @media (max-width:620px){
+    .plate{inset:8px}
+    .marginalia{display:none}
+    footer{flex-direction:column;gap:6px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation:none !important;opacity:1 !important;filter:none !important}
+  }
+</style>
+</head>
+<body>
+
+<div class="plate" aria-hidden="true">
+  <span class="tl">FRAGMENTUM</span>
+  <span class="br">EX PARTE</span>
+</div>
+
+<div class="dust" aria-hidden="true">
+  <i style="--x:6%;--dx:18px;--s:2px;--d:26s;--delay:-4s;--o:.34"></i>
+  <i style="--x:13%;--dx:-22px;--s:1px;--d:31s;--delay:-17s;--o:.22"></i>
+  <i style="--x:21%;--dx:12px;--s:3px;--d:23s;--delay:-9s;--o:.26"></i>
+  <i style="--x:29%;--dx:-14px;--s:1px;--d:36s;--delay:-22s;--o:.30"></i>
+  <i style="--x:36%;--dx:24px;--s:2px;--d:28s;--delay:-13s;--o:.20"></i>
+  <i style="--x:44%;--dx:-18px;--s:1px;--d:33s;--delay:-2s;--o:.28"></i>
+  <i style="--x:52%;--dx:16px;--s:2px;--d:25s;--delay:-19s;--o:.24"></i>
+  <i style="--x:59%;--dx:-26px;--s:3px;--d:38s;--delay:-7s;--o:.18"></i>
+  <i style="--x:66%;--dx:10px;--s:1px;--d:29s;--delay:-25s;--o:.32"></i>
+  <i style="--x:73%;--dx:-12px;--s:2px;--d:34s;--delay:-11s;--o:.22"></i>
+  <i style="--x:81%;--dx:20px;--s:1px;--d:27s;--delay:-3s;--o:.30"></i>
+  <i style="--x:88%;--dx:-16px;--s:3px;--d:40s;--delay:-16s;--o:.16"></i>
+  <i style="--x:94%;--dx:14px;--s:2px;--d:30s;--delay:-21s;--o:.26"></i>
+  <i style="--x:18%;--dx:-8px;--s:1px;--d:44s;--delay:-6s;--o:.14"></i>
+  <i style="--x:40%;--dx:9px;--s:1px;--d:46s;--delay:-28s;--o:.12"></i>
+  <i style="--x:63%;--dx:-10px;--s:2px;--d:42s;--delay:-14s;--o:.15"></i>
+  <i style="--x:85%;--dx:7px;--s:1px;--d:48s;--delay:-24s;--o:.13"></i>
+  <i style="--x:51%;--dx:-6px;--s:1px;--d:50s;--delay:-31s;--o:.11"></i>
+</div>
+
+<main class="sheet">
+  <div class="paper" aria-hidden="true"></div>
+  <div class="crease" aria-hidden="true"></div>
+
+  <div class="content">
+
+    <p class="kicker">A cover for three readings · 为三次阅读所作的封面</p>
+
+    <h1><span class="gilded">THE FRAGMENT</span></h1>
+    <p class="zh-title">残 卷</p>
+
+    <div class="rule" aria-hidden="true"><i></i></div>
+
+    <div class="epigraph">
+      <p class="en">Everything that survives does so by breaking.</p>
+      <p class="zh">一切幸存之物,都以破碎为代价。</p>
+    </div>
+
+    <section class="passage lead" style="--d:.85s">
+      <span class="num" aria-hidden="true">I</span>
+      <p class="en">It arrived missing its beginning. The first page had been torn away so cleanly that the tear looked intentional, as if the book had decided to start in the middle and dared anyone to object.</p>
+      <p class="zh">它到来时已经没有了开头。第一页被撕去,撕口整齐得像是有意为之——仿佛这本书决定从中间开始,并挑衅任何人提出异议。</p>
+    </section>
+
+    <section class="passage" style="--d:1.05s">
+      <span class="num" aria-hidden="true">II</span>
+      <p class="en">What remained was not a story but the weather of one: a name in the margin, a date without a year, a sentence that stopped in the middle of its own breath.</p>
+      <p class="zh">留下的不是一个故事,而是故事的气候:页边的一个名字,一个没有年份的日期,一句在自己呼吸的中途停下的句子。</p>
+    </section>
+
+    <section class="passage" style="--d:1.25s">
+      <span class="num" aria-hidden="true">III</span>
+      <p class="en">We are trained to mourn the missing. But a fragment asks something else of us. It asks us to stand in the gap—to become, for a moment, the part that was lost.</p>
+      <p class="zh">我们被训练去哀悼缺失。但残卷向我们提出的,是另一个请求:它请我们站进那道空缺里——在某一瞬间,成为失去的那一部分。</p>
+    </section>
+
+    <section class="passage" style="--d:1.45s">
+      <span class="num" aria-hidden="true">IV</span>
+      <p class="en">Three times the page ends before it should. Three times the reader is left holding a silence shaped like a hand.</p>
+      <p class="zh">页面三次在它本该结束之前结束。读者三次握住的,是一个形状像手的沉默。</p>
+    </section>
+
+    <section class="passage" style="--d:1.65s">
+      <span class="num" aria-hidden="true">V</span>
+      <p class="en">The missing piece is not hidden. It was never in the box. It is the shape your attention makes when it leans toward what is not there.</p>
+      <p class="zh">缺失的那一块并没有被藏起来。它从来不在盒子里。它是你的注意力探向不在之物时,所留下的形状。</p>
+    </section>
+
+    <section class="passage" style="--d:1.85s">
+      <span class="num" aria-hidden="true">VI</span>
+      <p class="en">So read slowly. Let the edges stay rough. A whole thing can be finished and forgotten; a fragment stays open, and waits.</p>
+      <p class="zh">所以,慢一点读。让边缘保持粗糙。完整之物可以被完成,然后被遗忘;残卷则始终敞开,并等待。</p>
+    </section>
+
+    <div class="coda">
+      <p class="en">It stays open, and waits.</p>
+      <p class="zh">它始终敞开,并等待。</p>
+      <span class="mark" aria-hidden="true"></span>
+    </div>
+
+    <footer>
+      <span>THE FRAGMENT · 残卷</span>
+      <span>COVER</span>
+    </footer>
+
+  </div>
+</main>
+
+</body>
+</html>
