@@ -40,13 +40,13 @@
     </text>
     <line x1="548" y1="134" x2="652" y2="134" stroke="#c9a86a" stroke-opacity="0.30"/>
     <rect x="595" y="129" width="10" height="10" transform="rotate(45 600 134)" fill="none" stroke="#c9a86a" stroke-opacity="0.55"/>
-    <text font-family="Georgia, 'Times New Roman', serif" font-size="32" fill="#efe6d4" letter-spacing="0.2">
+    <text font-family="Georgia, 'Times New Roman', serif" font-size="32" fill="#efe6d4" letter-spacing="0.2" y="206">
     <tspan x="110" dy="0">What remained was not a story but the weather of one: a name in the</tspan>
     <tspan x="110" dy="50">margin, a date without a year, a sentence that stopped in the</tspan>
     <tspan x="110" dy="50">middle of its own breath.</tspan>
     </text>
     <line x1="86" y1="344" x2="86" y2="402" stroke="#c9a86a" stroke-opacity="0.22"/>
-    <text font-family="'Songti SC','STSong','Noto Serif CJK SC','SimSun',serif" font-size="28" fill="#b6a88f" letter-spacing="1.4">
+    <text font-family="'Songti SC','STSong','Noto Serif CJK SC','SimSun',serif" font-size="28" fill="#b6a88f" letter-spacing="1.4" y="376">
       <tspan x="110" dy="0">留下的不是一个故事,而是故事的气候:页边的一个名字,</tspan>
       <tspan x="110" dy="46">一个没有年份的日期,一句在自己呼吸的中途停下的句子。</tspan>
     </text>
