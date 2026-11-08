@@ -2,17 +2,40 @@
   <img src="assets/incipit-banner.svg" alt="THE FRAGMENT · 残卷" width="100%">
 </p>
 
-<h1 align="center">THE FRAGMENT</h1>
+<p align="center">
+  <img src="assets/epigraph.svg" alt="Everything that survives does so by breaking. 一切幸存之物,都以破碎为代价。" width="100%">
+</p>
 
-<p align="center"><strong>残 卷</strong></p>
+<p align="center">
+  <img src="assets/fragment-01.svg" alt="Fragment I — It arrived missing its beginning. 它到来时已经没有了开头。" width="100%">
+</p>
 
-<p align="center"><em>A cover for three readings · 为三次阅读所作的封面</em></p>
+<p align="center">
+  <img src="assets/fragment-02.svg" alt="Fragment II — What remained was not a story but the weather of one. 留下的不是一个故事,而是故事的气候。" width="100%">
+</p>
 
----
+<p align="center">
+  <img src="assets/fragment-03.svg" alt="Fragment III — We are trained to mourn the missing. 我们被训练去哀悼缺失。" width="100%">
+</p>
 
-> Everything that survives does so by breaking.
->
-> 一切幸存之物,都以破碎为代价。
+<p align="center">
+  <img src="assets/fragment-04.svg" alt="Fragment IV — Three times the page ends before it should. 页面三次在它本该结束之前结束。" width="100%">
+</p>
+
+<p align="center">
+  <img src="assets/fragment-05.svg" alt="Fragment V — The missing piece is not hidden. 缺失的那一块并没有被藏起来。" width="100%">
+</p>
+
+<p align="center">
+  <img src="assets/fragment-06.svg" alt="Fragment VI — So read slowly. Let the edges stay rough. 所以,慢一点读。让边缘保持粗糙。" width="100%">
+</p>
+
+<p align="center">
+  <img src="assets/coda.svg" alt="It stays open, and waits. 它始终敞开,并等待。" width="100%">
+</p>
+
+<details>
+<summary>transcription · 抄本</summary>
 
 ### I
 
@@ -50,11 +73,6 @@ So read slowly. Let the edges stay rough. A whole thing can be finished and forg
 
 > 所以,慢一点读。让边缘保持粗糙。完整之物可以被完成,然后被遗忘;残卷则始终敞开,并等待。
 
----
-
-<p align="center"><em>It stays open, and waits.</em><br>
-它始终敞开,并等待。</p>
-
-<p align="center">✦</p>
+</details>
 
 <p align="center"><sub>THE FRAGMENT · 残卷 · <a href="incipit.html">full cover source</a></sub></p>
