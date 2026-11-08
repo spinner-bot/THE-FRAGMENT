@@ -1,0 +1,15 @@
+def step(n):
+    return 3*n+1 if n%2 else n//2
+
+def count(n,m=1):
+    return count(step(n),m+1) if n-1 else m
+
+def round(n,m=0,s=0):
+    return round(n,m-1 if m else count(n),count(s) if s else count(n)) if m-1 else s
+
+def calc(n,m=1,s={},u=set(),v=[]):
+    return calc(n,m+1 if m else 0,{**s,round(m):[*s[round(m)],m] if round(m) in s else [m]} if m else {},u,[next(((l + v) * (l + v + 1) // 2 + v for i, l, v in u if i == j), 0) for j in range(max((i for i, _, _ in u), default=-1) + 1)] if u else set()) if not (bool(m-n-1) ^ bool(m or v)) else sum(([-len(list(g))] if k == 0 else list(g) for k, g in __import__('itertools').groupby(v)), []) if u else calc(-1,0,{},set({k:(k,len(v),sum(v)) for k,v in s.items()}.values()),[])
+
+if __name__ == '__main__':
+    for n in range(1,int(input("loop："))+1):
+        print(f"[{n}]{calc(n)}",end="  " if n%1 else "\n")
