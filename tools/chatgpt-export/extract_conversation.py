@@ -16,6 +16,7 @@ Usage:
 import argparse
 import json
 import sys
+from datetime import datetime, timezone
 from pathlib import Path
 
 
@@ -79,18 +80,24 @@ def conversation_nodes(conversation):
     return nodes
 
 
-def render(conversation):
+def format_time(value):
+    if not isinstance(value, (int, float)):
+        return None
+    try:
+        return datetime.fromtimestamp(value, tz=timezone.utc).strftime(
+            "%Y-%m-%d %H:%M:%S UTC"
+        )
+    except (OverflowError, OSError, ValueError):
+        return None
+
+
+def render(conversation, source_url=None):
     title = conversation.get("title") or "ChatGPT conversation"
-    lines = [f"# {title}", ""]
-
     conversation_id = conversation.get("id")
-    created = conversation.get("create_time")
-    if conversation_id:
-        lines.append(f"- id: `{conversation_id}`")
-    if created:
-        lines.append(f"- created: {created}")
-    lines.append("")
+    created = format_time(conversation.get("create_time"))
+    extracted = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC")
 
+    sections = []
     count = 0
     for node in conversation_nodes(conversation):
         message = node.get("message")
@@ -101,12 +108,24 @@ def render(conversation):
         if not text:
             continue
         count += 1
-        lines.append(f"## {role} {count}")
-        lines.append("")
-        lines.append(text)
-        lines.append("")
+        stamp = format_time(message.get("create_time"))
+        heading = f"## {count} · {role}"
+        if stamp:
+            heading += f" · {stamp}"
+        sections.append(f"{heading}\n\n{text}\n")
 
-    return "\n".join(lines), count
+    header = [f"# {title}", ""]
+    if conversation_id:
+        header.append(f"- id: `{conversation_id}`")
+    if created:
+        header.append(f"- created: {created}")
+    if source_url:
+        header.append(f"- source: {source_url}")
+    header.append(f"- extracted: {extracted}")
+    header.append(f"- messages: {count}")
+    header.append("")
+
+    return "\n".join(header) + "\n" + "\n".join(sections), count
 
 
 def main():
@@ -115,6 +134,7 @@ def main():
     parser.add_argument("-o", "--output", type=Path, default=Path("chatgpt-export.md"))
     parser.add_argument("--id", help="select a conversation by id")
     parser.add_argument("--title", help="select a conversation by title substring")
+    parser.add_argument("--source-url", help="source URL to record in the header")
     parser.add_argument("--list", action="store_true", help="list conversations and exit")
     args = parser.parse_args()
 
@@ -151,7 +171,7 @@ def main():
             )
         sys.exit(2)
 
-    markdown, count = render(conversations[0])
+    markdown, count = render(conversations[0], source_url=args.source_url)
     args.output.write_text(markdown, encoding="utf-8")
     print(f"wrote {args.output} ({count} messages, {len(markdown)} chars)")
 
