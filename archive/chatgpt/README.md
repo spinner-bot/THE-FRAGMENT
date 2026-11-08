@@ -7,6 +7,7 @@
 ```text
 archive/chatgpt/
 ├─ README.md
+├─ timeline.md               # 两段对话的合并时间线与重叠说明
 ├─ 01/
 │  ├─ share-01.raw.json      # 分享接口返回的原始 JSON
 │  ├─ share-01.raw.html      # 分享页原始 HTML，用于交叉核对
