@@ -72,7 +72,7 @@
 31. [提示经济：F、无效与无法提供](part-05-p3.md#第-31-章提示经济f无效与无法提供)
 32. [P1-02C → P1-02B：base64 文本伪装](part-05-p3.md#第-32-章p1-02c--p1-02bbase64-文本伪装)
 33. [P1-02A：content.tar 与 README.7z](part-05-p3.md#第-33-章p1-02acontent.tar-与-readme7z)
-34. [30 位目录名与 README.json 码点](part-05-p3.md#第-34-章30-位目录名与-readmejson-码点)
+34. [31 位整数目录名与 README.json 码点](part-05-p3.md#第-34-章31-位整数目录名与-readmejson-码点)
 35. [prompt.7z 与 puzzle.7z：原始五题](part-05-p3.md#第-35-章prompt7z-与-puzzle7z原始五题)
 
 ### 第 V 部分 · 五题数据挑战

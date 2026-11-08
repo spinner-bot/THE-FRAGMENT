@@ -230,7 +230,7 @@ puzzle/
 | 10 | `P1-02C.7z` | 解 7z | `P1-02B` | 无 |
 | 11 | `P1-02B` | base64 解码 | ZIP | 无 |
 | 12 | ZIP | 解 ZIP | `content.tar`、`README.7z` | 无 |
-| 13 | `content.tar` | 解 tar | 30 位目录名 | 无 |
+| 13 | `content.tar` | 解 tar | 33 字符目录名 | 无 |
 | 14 | `README.7z` | 解 7z | `README.json` | 无 |
 | 15 | `README.json` | 码点转字符 | 2,245 字符长文本 | 无 |
 | 16 | `prompt.7z` | 解 7z | `prompt.md`、`prompt.html` | 无 |
@@ -281,7 +281,7 @@ puzzle/
 | 16 | 解嵌套 C | `P1-02C.7z` → `P1-02B` | L5 | base64 文本 | 倒序命名 |
 | 17 | 解 base64 | `P1-02B` → ZIP | L6 | `P1-02A/` | 文本伪装 |
 | 18 | 解 ZIP | `P1-02A/` | L7 | `content.tar`、`README.7z` | 两条分支 |
-| 19 | 解 content | `content.tar` → 30 位目录 | L8 | `prompt.7z`、`puzzle.7z` | 长目录名 |
+| 19 | 解 content | `content.tar` → 33 字符目录 | L8 | `prompt.7z`、`puzzle.7z` | 长目录名 |
 | 20 | 解 README | `README.7z` → `README.json` | L8 | 2,245 字符长文本 | 元叙事，不是答案 |
 | 21 | 解题目说明 | `prompt.7z` → `prompt.md/html` | L9 | 五题规则 | 原始挑战说明 |
 | 22 | 解题目集 | `puzzle.7z` | L9 | Q1–Q3、Q4.tar、Q5.tar | 五题数据 |
@@ -425,7 +425,7 @@ puzzle/
 │  └─ P1-02C.7z → 继续拆
 │
 ├─ P1-02C → P1-02B → base64 → ZIP
-│  ├─ content.tar → 30 位目录名 → prompt.7z + puzzle.7z
+│  ├─ content.tar → 33 字符目录名 → prompt.7z + puzzle.7z
 │  └─ README.7z → README.json → 长文本
 │
 ├─ 解 prompt + puzzle
