@@ -1,0 +1,25 @@
+{
+  "segment": 1,
+  "title": "接受挑战 Fragment",
+  "source": "https://chatgpt.com/share/6af080c0-eaf8-83e8-ac1d-831c8490c346",
+  "api": "https://chatgpt.com/backend-api/share/6af080c0-eaf8-83e8-ac1d-831c8490c346",
+  "archived_utc": "2026-11-08T15:09:28.905585+00:00",
+  "files": {
+    "share-01.raw.json": {
+      "bytes": 4428674,
+      "sha256": "f25fcbbe263a16fb800fa3aa1bbc552bb71ee9c35f721b621d79fe97efc82960"
+    },
+    "share-01.raw.html": {
+      "bytes": 2946581,
+      "sha256": "c246e8971a1077902075248b654bf5c7e990f9cca8576f0c39224a52e52c1edd"
+    },
+    "transcript.md": {
+      "bytes": 93078,
+      "sha256": "78c6a6bcaea27330102bdd94ca90e0d103732137fea31aca79820547d7ce4a50"
+    },
+    "transcript-full.md": {
+      "bytes": 384250,
+      "sha256": "0d423752072306c62e656d0b72548f930200140d38868d5601d3fcfaaabb629d"
+    }
+  }
+}
