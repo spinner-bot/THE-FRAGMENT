@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300" width="1200" height="300" role="img" aria-label="Epigraph">
+  <title>Epigraph</title>
+  <defs>
+    <linearGradient id="paper" x1="0" y1="0" x2="0.35" y2="1">
+      <stop offset="0" stop-color="#1a150d"/>
+      <stop offset="0.46" stop-color="#110e09"/>
+      <stop offset="1" stop-color="#0c0a07"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#f4ead6"/>
+      <stop offset="0.38" stop-color="#e7d3a8"/>
+      <stop offset="0.62" stop-color="#c9a86a"/>
+      <stop offset="1" stop-color="#f0e3c8"/>
+    </linearGradient>
+    <radialGradient id="halo" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#c9a86a" stop-opacity="0.10"/>
+      <stop offset="1" stop-color="#c9a86a" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="soft40" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="40"/>
+    </filter>
+    <pattern id="grain" width="4" height="4" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0.5" x2="4" y2="0.5" stroke="#ffffff" stroke-opacity="0.018"/>
+      <line x1="0" y1="2.5" x2="4" y2="2.5" stroke="#000000" stroke-opacity="0.10"/>
+    </pattern>
+    <clipPath id="torn"><polygon points="24,44 92,30 170,50 250,28 340,46 430,32 520,52 610,30 700,48 790,34 880,50 970,30 1060,46 1130,32 1176,42 1178,99 1170,168 1176,237 1172,258 1176,256 1130,272 1060,252 970,270 880,250 790,268 700,254 610,272 520,250 430,266 340,252 250,270 170,256 92,268 24,258 28,237 22,168 30,99 24,60"/></clipPath>
+  </defs>
+  <g clip-path="url(#torn)">
+    <rect width="1200" height="300" fill="url(#paper)"/>
+    <rect width="1200" height="300" fill="url(#grain)"/>
+    <ellipse cx="600" cy="150" rx="420" ry="120" fill="url(#halo)">
+      <animate attributeName="opacity" values="0.6;1;0.6" dur="9s" repeatCount="indefinite"/>
+    </ellipse>
+    <rect x="54" y="58" width="1092" height="184" fill="none" stroke="#c9a86a" stroke-opacity="0.09"/>
+    <rect x="595" y="52" width="10" height="10" transform="rotate(45 600 57)" fill="none" stroke="#c9a86a" stroke-opacity="0.5"/>
+    <text x="600" y="146" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif"
+          font-size="36" font-style="italic" fill="#e6d9c2" letter-spacing="0.4">Everything that survives does so by breaking.</text>
+    <text x="600" y="214" text-anchor="middle" font-family="'Songti SC','STSong','Noto Serif CJK SC','SimSun',serif"
+          font-size="29" fill="#a3967d" letter-spacing="3">一切幸存之物,都以破碎为代价。</text>
+    <line x1="520" y1="248" x2="680" y2="248" stroke="#c9a86a" stroke-opacity="0.22"/>
+  </g>
+</svg>
