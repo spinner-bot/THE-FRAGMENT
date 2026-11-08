@@ -143,6 +143,7 @@ def render(conversation, source_url=None, mode="text", include_hidden=False):
 
     sections = []
     count = 0
+    times = []
     for node in conversation_nodes(conversation):
         message = node.get("message")
         if not isinstance(message, dict):
@@ -160,7 +161,10 @@ def render(conversation, source_url=None, mode="text", include_hidden=False):
             continue
 
         count += 1
-        stamp = format_time(message.get("create_time"))
+        created_time = message.get("create_time")
+        if isinstance(created_time, (int, float)):
+            times.append(created_time)
+        stamp = format_time(created_time)
         heading = f"## {count} · {role}"
         if kind == "code":
             heading += f" · code ({language})" if language else " · code"
@@ -186,7 +190,9 @@ def render(conversation, source_url=None, mode="text", include_hidden=False):
     if conversation_id:
         header.append(f"- id: `{conversation_id}`")
     if created:
-        header.append(f"- created: {created}")
+        header.append(f"- record created: {created}")
+    if times:
+        header.append(f"- time range: {format_time(min(times))} -> {format_time(max(times))}")
     if source_url:
         header.append(f"- source: {source_url}")
     header.append(f"- extracted: {extracted}")
