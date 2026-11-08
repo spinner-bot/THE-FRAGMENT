@@ -26,20 +26,20 @@
 6. 转成 Markdown：
 
 ```bash
-python -I -X utf8 tools/chatgpt-export/extract_conversation.py \
+python -I -X utf8 archive/chatgpt/tools/extract_conversation.py \
   reference/chatgpt-<id>.json -o reference/chatgpt-log.md
 ```
 
 如果用的是账号完整导出包 `conversations.json`，先列对话：
 
 ```bash
-python -I -X utf8 tools/chatgpt-export/extract_conversation.py reference/conversations.json --list
+python -I -X utf8 archive/chatgpt/tools/extract_conversation.py reference/conversations.json --list
 ```
 
 再按 id 或标题选出目标：
 
 ```bash
-python -I -X utf8 tools/chatgpt-export/extract_conversation.py \
+python -I -X utf8 archive/chatgpt/tools/extract_conversation.py \
   reference/conversations.json --id <id> -o reference/chatgpt-log.md
 ```
 
@@ -116,5 +116,5 @@ https://chatgpt.com/backend-api/share/<share_id>
 ## 隐私与提交
 
 - `reference/` 已加入 `.gitignore`，导出的对话不会被提交。
-- `tools/chatgpt-export/` 本身只含通用脚本，可以提交。
+- `archive/chatgpt/tools/` 本身只含通用脚本，可以提交。
 - 不要使用会读取整段对话的第三方浏览器扩展；这类扩展会把内容上传到外部服务。

@@ -262,7 +262,7 @@ puzzle/
 | `README.md`（仓库首页） | 附录 F | 附录 F |
 | `assets/*.svg` | 附录 F | 附录 F |
 | `incipit.html`（仓库根） | 附录 F | 附录 F |
-| `tools/chatgpt-export/*` | 附录 F | 附录 F |
+| `archive/chatgpt/tools/*` | 附录 F | 附录 F |
 | `archive/chatgpt/*` | 第 51 章 | 第 51 章、附录 F |
 | `.gitattributes` / `.gitignore` | 附录 F | 附录 F |
 

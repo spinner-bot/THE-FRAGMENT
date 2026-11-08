@@ -14,12 +14,13 @@ archive/chatgpt/
 │  ├─ transcript.md          # 清洗稿：user / assistant 正文 + recap
 │  ├─ transcript-full.md     # 完整稿：额外包含代码调用与执行输出
 │  └─ manifest.json          # 来源、大小、SHA-256
-└─ 02/
-   ├─ share-02.raw.json
-   ├─ share-02.raw.html
-   ├─ transcript.md
-   ├─ transcript-full.md
-   └─ manifest.json
+├─ 02/
+│  ├─ share-02.raw.json
+│  ├─ share-02.raw.html
+│  ├─ transcript.md
+│  ├─ transcript-full.md
+│  └─ manifest.json
+└─ tools/                     # 对话导出工具（见 tools/README.md）
 ```
 
 ## 约定

@@ -6,4 +6,4 @@
 
 - 本目录下的导出内容默认被 `.gitignore` 忽略，不会进入仓库。
 - 这里的材料可能包含 5050、K 以及完整答案推理，不要公开。
-- 工具位于 `tools/chatgpt-export/`。
+- 工具位于 `archive/chatgpt/tools/`。

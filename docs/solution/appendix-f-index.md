@@ -126,7 +126,7 @@ timeline.md, 提示 1
 
 ## F.4 工具层
 
-目录：[`tools/chatgpt-export/`](../../tools/chatgpt-export/README.md)
+目录：[`archive/chatgpt/tools/`](../../archive/chatgpt/tools/README.md)
 
 | 文件 | 大小 | 作用 |
 |---|---:|---|
