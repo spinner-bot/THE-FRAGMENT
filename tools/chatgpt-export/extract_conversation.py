@@ -4,10 +4,15 @@
 Accepts either:
   * a full account export (conversations.json: a list of conversations), or
   * a single conversation object (mapping / current_node), as returned by
-    /backend-api/conversation/<id>.
+    /backend-api/conversation/<id> or /backend-api/share/<share_id>.
+
+Modes:
+  text  (default) user and assistant text only, plus reasoning recaps
+  full  text plus code-interpreter calls and execution outputs
 
 Usage:
   python -I -X utf8 extract_conversation.py input.json -o output.md
+  python -I -X utf8 extract_conversation.py input.json --mode full -o all.md
   python -I -X utf8 extract_conversation.py input.json --list
   python -I -X utf8 extract_conversation.py input.json --id <id> -o output.md
   python -I -X utf8 extract_conversation.py input.json --title "keyword" -o output.md
@@ -18,6 +23,8 @@ import json
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
+
+REDACTED = "The output of this plugin was redacted."
 
 
 def load_json(path: Path):
@@ -38,26 +45,56 @@ def find_conversations(obj):
     return []
 
 
-def message_text(message):
+def is_hidden(message):
+    metadata = message.get("metadata") or {}
+    return bool(metadata.get("is_visually_hidden_from_conversation"))
+
+
+def message_payload(message):
+    """Return (kind, text, language) for a message, or None to skip it."""
     if not isinstance(message, dict):
-        return ""
+        return None
+
     content = message.get("content") or {}
+    content_type = content.get("content_type")
     parts = content.get("parts")
-    chunks = []
 
-    if isinstance(parts, list):
-        for part in parts:
-            if isinstance(part, str):
-                chunks.append(part)
-            elif isinstance(part, dict):
-                text = part.get("text")
-                if isinstance(text, str) and text:
-                    chunks.append(text)
+    if content_type == "text":
+        chunks = []
+        if isinstance(parts, list):
+            for part in parts:
+                if isinstance(part, str):
+                    chunks.append(part)
+                elif isinstance(part, dict):
+                    text = part.get("text")
+                    if isinstance(text, str) and text:
+                        chunks.append(text)
+        if not chunks and isinstance(content.get("text"), str):
+            chunks.append(content["text"])
+        text = "\n".join(chunks).strip()
+        if not text or text == REDACTED:
+            return None
+        return ("text", text, "")
 
-    if not chunks and isinstance(content.get("text"), str):
-        chunks.append(content["text"])
+    if content_type == "code":
+        text = content.get("text")
+        if isinstance(text, str) and text.strip():
+            return ("code", text.strip(), content.get("language") or "")
+        return None
 
-    return "\n".join(chunks).strip()
+    if content_type == "execution_output":
+        text = content.get("text")
+        if isinstance(text, str) and text.strip() and text.strip() != REDACTED:
+            return ("output", text.strip(), "")
+        return None
+
+    if content_type == "reasoning_recap":
+        text = content.get("content")
+        if isinstance(text, str) and text.strip():
+            return ("recap", text.strip(), "")
+        return None
+
+    return None
 
 
 def conversation_nodes(conversation):
@@ -91,9 +128,16 @@ def format_time(value):
         return None
 
 
-def render(conversation, source_url=None):
+def fence(text, language=""):
+    ticks = "````"
+    while ticks in text:
+        ticks += "`"
+    return f"{ticks}{language}\n{text}\n{ticks}"
+
+
+def render(conversation, source_url=None, mode="text", include_hidden=False):
     title = conversation.get("title") or "ChatGPT conversation"
-    conversation_id = conversation.get("id")
+    conversation_id = conversation.get("id") or conversation.get("conversation_id")
     created = format_time(conversation.get("create_time"))
     extracted = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC")
 
@@ -103,16 +147,40 @@ def render(conversation, source_url=None):
         message = node.get("message")
         if not isinstance(message, dict):
             continue
-        role = (message.get("author") or {}).get("role") or "unknown"
-        text = message_text(message)
-        if not text:
+        if not include_hidden and is_hidden(message):
             continue
+
+        role = (message.get("author") or {}).get("role") or "unknown"
+        payload = message_payload(message)
+        if payload is None:
+            continue
+
+        kind, text, language = payload
+        if mode == "text" and kind not in ("text", "recap"):
+            continue
+
         count += 1
         stamp = format_time(message.get("create_time"))
         heading = f"## {count} · {role}"
+        if kind == "code":
+            heading += f" · code ({language})" if language else " · code"
+        elif kind == "output":
+            heading += " · output"
+        elif kind == "recap":
+            heading += " · recap"
         if stamp:
             heading += f" · {stamp}"
-        sections.append(f"{heading}\n\n{text}\n")
+
+        if kind == "code":
+            body = fence(text, language)
+        elif kind == "output":
+            body = fence(text, "text")
+        elif kind == "recap":
+            body = f"_{text}_"
+        else:
+            body = text
+
+        sections.append(f"{heading}\n\n{body}\n")
 
     header = [f"# {title}", ""]
     if conversation_id:
@@ -122,6 +190,7 @@ def render(conversation, source_url=None):
     if source_url:
         header.append(f"- source: {source_url}")
     header.append(f"- extracted: {extracted}")
+    header.append(f"- mode: {mode}")
     header.append(f"- messages: {count}")
     header.append("")
 
@@ -135,6 +204,8 @@ def main():
     parser.add_argument("--id", help="select a conversation by id")
     parser.add_argument("--title", help="select a conversation by title substring")
     parser.add_argument("--source-url", help="source URL to record in the header")
+    parser.add_argument("--mode", choices=("text", "full"), default="text")
+    parser.add_argument("--include-hidden", action="store_true")
     parser.add_argument("--list", action="store_true", help="list conversations and exit")
     args = parser.parse_args()
 
@@ -171,7 +242,12 @@ def main():
             )
         sys.exit(2)
 
-    markdown, count = render(conversations[0], source_url=args.source_url)
+    markdown, count = render(
+        conversations[0],
+        source_url=args.source_url,
+        mode=args.mode,
+        include_hidden=args.include_hidden,
+    )
     args.output.write_text(markdown, encoding="utf-8")
     print(f"wrote {args.output} ({count} messages, {len(markdown)} chars)")
 
