@@ -998,7 +998,7 @@ def rewrite_links(text: str, file_name: str,
 
 
 def build_prose(section_id: str, kicker: str, title_en: str, title_zh: str,
-                pairs, epilogue: bool = False) -> str:
+                pairs, epilogue: bool = False, bilingual_note: bool = False) -> str:
     body = []
     for i, (glyph, en, zh) in enumerate(pairs):
         cls = "pair reveal first" if i == 0 else "pair reveal"
@@ -1010,6 +1010,14 @@ def build_prose(section_id: str, kicker: str, title_en: str, title_zh: str,
         '<div class="prose-mark"><svg viewBox="0 0 24 24">'
         '<path d="M12 3v18M4 8l8 4 8-4M4 16l8-4 8 4"/></svg></div>'
     )
+    note = ""
+    if bilingual_note:
+        note = (
+            '<div class="bilingual-note reveal" data-anim="fade">'
+            '<p class="en">Each chapter opens with an English prelude; the full technical exposition follows in Chinese.</p>'
+            '<p class="zh">每一章以英文引子开场，完整的技术正文随后以中文展开。</p>'
+            '</div>'
+        )
     coda = ""
     if epilogue:
         coda = (
@@ -1024,6 +1032,7 @@ def build_prose(section_id: str, kicker: str, title_en: str, title_zh: str,
     <p class="prose-title-zh">{html.escape(title_zh)}</p>
     {mark}
   </div>
+  {note}
   {''.join(body)}
   {coda}
 </section>"""
@@ -1173,7 +1182,8 @@ def main() -> int:
         content.append(build_appendix(app, body, anchor_map))
     cards_with_chapters = parts_with_chapters + [(codex_part, appendix_chapters)]
 
-    prologue = build_prose("prologue", "PROLOGUE · 序言", "Prologue", "序言", PROLOGUE)
+    prologue = build_prose("prologue", "PROLOGUE · 序言", "Prologue", "序言", PROLOGUE,
+                           bilingual_note=True)
     contents = build_contents(cards_with_chapters)
     epilogue = build_prose("epilogue", "EPILOGUE · 终章", "Epilogue", "终章", EPILOGUE, epilogue=True)
     # Appendix E is the answers jump target; the appendix section itself carries the id.

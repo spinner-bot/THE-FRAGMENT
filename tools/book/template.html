@@ -160,6 +160,9 @@ hr::after{content:"◇";position:absolute;left:50%;top:50%;transform:translate(-
 .prose-mark{width:70px;height:70px;margin:34px auto 0;border:1px solid var(--line-2);border-radius:50%;display:grid;place-items:center;position:relative}
 .prose-mark::before{content:"";position:absolute;inset:7px;border:1px dashed rgba(201,168,106,.24);border-radius:50%;animation:spin 30s linear infinite}
 .prose-mark svg{width:24px;height:24px;stroke:var(--gold);fill:none;stroke-width:1}
+.bilingual-note{max-width:620px;margin:26px auto 48px;padding:14px 0;text-align:center;border-top:1px solid rgba(201,168,106,.12);border-bottom:1px solid rgba(201,168,106,.12)}
+.bilingual-note .en{font-family:var(--serif-en);font-style:italic;font-size:13px;line-height:1.7;color:var(--parch-dim);margin:0}
+.bilingual-note .zh{font-family:var(--serif-zh);font-size:11px;line-height:1.9;letter-spacing:.1em;color:var(--parch-dim);opacity:.8;margin:4px 0 0}
 .pair{position:relative;margin:0 0 38px;padding:0 0 0 34px}
 .pair::before{content:attr(data-glyph);position:absolute;left:0;top:.1em;font-family:var(--serif-en);font-size:13px;color:var(--gold-3);letter-spacing:.1em}
 .pair-en{font-family:var(--serif-en);font-size:18px;line-height:1.85;color:var(--parch-2);margin:0 0 10px;letter-spacing:.012em}
@@ -460,7 +463,7 @@ svg .dash{fill:none;stroke:rgba(116,214,211,.26);stroke-width:.8;stroke-dasharra
       <div><b>55</b><span>Chapters</span></div>
       <div><b>06</b><span>Appendices</span></div>
       <div><b>03</b><span>Outer Locks</span></div>
-      <div><b>11</b><span>Layers</span></div>
+      <div><b>12</b><span>Layers</span></div>
     </div>
   </div>
   <div class="scroll-cue"><span>Descend</span><i></i></div>
