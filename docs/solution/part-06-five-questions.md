@@ -200,16 +200,16 @@ F_{n+1} = F_n + F_{n-1}
 行 `n` 的长度：
 
 ```text
-L_n = F_{n+1}
+L_n = F_n
 ```
 
 验证：
 
 ```text
-n=1: L=1=F2
-n=2: L=1=F3
-n=3: L=2=F4
-n=8: L=21=F9
+n=1: L=1=F1
+n=2: L=1=F2
+n=3: L=2=F3
+n=8: L=21=F8
 ```
 
 ### 38.3 数值规律
@@ -245,7 +245,7 @@ for _ in range(10):
     fib.append(fib[-1] + fib[-2])
 
 for n in range(1, 9):
-    length = fib[n]  # F_{n+1}
+    length = fib[n - 1]  # F_n
     row = [-1 if k % 5 == 0 else 1 for k in range(1, length + 1)]
     print(f"[{n}][{','.join(map(str, row))}]")
 ```
@@ -260,7 +260,7 @@ for n in range(1, 9):
 
 ### 38.7 本章的结论
 
-- Q2 行长度是 Fibonacci：`L_n=F_{n+1}`。
+- Q2 行长度是 Fibonacci：`L_n=F_n`。
 - 行内值：`k%5==0` 时为 `-1`，否则为 `1`。
 - 两个规律独立，必须同时发现。
 
