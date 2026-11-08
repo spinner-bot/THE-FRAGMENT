@@ -80,6 +80,25 @@ bash reference/request.curl.sh -o reference/chatgpt.json
 
 `request.curl.sh` 里含有登录凭据，不要外发，也不要提交到仓库。
 
+## 分享链接的原始 JSON
+
+公开分享页有一个可直接读取的接口：
+
+```text
+https://chatgpt.com/backend-api/share/<share_id>
+```
+
+返回的 JSON 包含 `mapping`、`linear_conversation`、隐藏的流式分片、代码调用和工具输出，是比页面 DOM 更完整的原始数据。保存后可用本工具转换。
+
+注意：部分工具输出会被 OpenAI 在服务端标记为 `The output of this plugin was redacted.`，这不是抓取丢失，无法从分享接口恢复。
+
+## 输出模式
+
+- `--mode text`（默认）：只保留 user / assistant 的正文与 reasoning recap，适合作为主阅读稿。
+- `--mode full`：额外保留代码解释器调用和执行输出，适合作为审计附录。
+
+隐藏的流式分片（`is_visually_hidden_from_conversation`）默认不写入 Markdown，避免同一段报告重复十几次；原始 JSON 中仍然完整保留。
+
 ## 输出格式
 
 每条消息如下：
