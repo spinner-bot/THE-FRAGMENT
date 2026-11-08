@@ -80,6 +80,20 @@ bash reference/request.curl.sh -o reference/chatgpt.json
 
 `request.curl.sh` 里含有登录凭据，不要外发，也不要提交到仓库。
 
+## 输出格式
+
+每条消息如下：
+
+```markdown
+## 3 · assistant · 2026-11-08 10:12:33 UTC
+```
+
+- 编号、角色、UTC 时间；
+- 对话头记录 id、created、source、extracted、messages；
+- `create_time` 缺失时只写编号与角色，**不伪造时间**。
+
+多个分享链接建议分别导出为 `01-*.md`、`02-*.md`，再按时间线合并；原文中的接续摘要保留并标注，不重复计入推理链。
+
 ## 隐私与提交
 
 - `reference/` 已加入 `.gitignore`，导出的对话不会被提交。
