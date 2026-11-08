@@ -79,9 +79,11 @@ Q2.inner.7z                                 2,187
 | 文件 | 大小 | SHA-256 |
 |---|---:|---|
 | `Q1/Q1` | 20 | `a7a06f11a4598c9b67d2a5ba54ba529fe765cd17177cc474535c6696038bf931` |
-| `Q2.zst` 解压后的 `Q2.inner.7z` | 2,187 | `5d71138a6bbe2d4f4fee2f1f8e9dc657649c898b44106706a854010993bdcbf1` |
+| `Q2.zst` 解密后的 `Q2.inner.7z` | 2,187 | `5d71138a6bbe2d4f4fee2f1f8e9dc657649c898b44106706a854010993bdcbf1` |
 | `Q2/SHIT.tar.xz` | 1,960 | `0b70a7b1ec2036212c06ef432e3411fe6fffe0ce18e4fdc70113da04d4cf4a14` |
 | `Q2/the map.bmp` | 17 | `0041688b0b35badba156aad0b4103231303d49536cbf53f94b1a1239f3e53d94` |
+
+`Q2.zst` 解压后得到 ITC2RECIPE 文本（Q2 锁）；用 5050 解密该文本，才得到 `Q2.inner.7z`。
 
 `the map.bmp` 不是位图：17 字节，内容为 `answer is the key`。
 
