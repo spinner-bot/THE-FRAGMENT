@@ -55,7 +55,7 @@
 
 18. [Q2.zst：zstd 与第一把锁](part-04-p2.md#第-18-章q2zstzstd-与第一把锁)
 19. [用 5050 打开 Q2](part-04-p2.md#第-19-章用-5050-打开-q2)
-20. [Q2 payload：SHIT.tar.xz 与 map.bmp](part-04-p2.md#第-20-章q2-payloadshit.tar.xz-与-map.bmp)
+20. [Q2 payload：SHIT.tar.xz 与 map.bmp](part-04-p2.md#第-20-章q2-payloadshittarxz-与-mapbmp)
 21. [SHIT.README：可读的噪音](part-04-p2.md#第-21-章shitreadme可读的噪音)
 22. [SHIT.bz2：真正的题面](part-04-p2.md#第-22-章shitbz2真正的题面)
 23. [仿射递推：从 10^18 次到一次幂](part-04-p2.md#第-23-章仿射递推从-1018-次到一次幂)
@@ -71,7 +71,7 @@
 30. [为什么永远拿不到 B：可达等级分析](part-05-p3.md#第-30-章为什么永远拿不到-b可达等级分析)
 31. [提示经济：F、无效与无法提供](part-05-p3.md#第-31-章提示经济f无效与无法提供)
 32. [P1-02C → P1-02B：base64 文本伪装](part-05-p3.md#第-32-章p1-02c--p1-02bbase64-文本伪装)
-33. [P1-02A：content.tar 与 README.7z](part-05-p3.md#第-33-章p1-02acontent.tar-与-readme7z)
+33. [P1-02A：content.tar 与 README.7z](part-05-p3.md#第-33-章p1-02acontenttar-与-readme7z)
 34. [31 位整数目录名与 README.json 码点](part-05-p3.md#第-34-章31-位整数目录名与-readmejson-码点)
 35. [prompt.7z 与 puzzle.7z：原始五题](part-05-p3.md#第-35-章prompt7z-与-puzzle7z原始五题)
 
