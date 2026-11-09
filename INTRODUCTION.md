@@ -9,6 +9,7 @@ THE FRAGMENT is a public puzzle package built as a chain of nested archives, a s
 For developers, the interesting part is not the story. It is a **small, deterministic, fully documented corpus** for file-system reasoning, tool use under uncertainty, hypothesis revision, and long-horizon planning.
 
 - 12 layers, from the outer ZIP to the final generator
+- Heavy metanarrative framing and layered misdirection: plausible wrong models are deliberately supported by the data
 - 55 solution chapters and 6 appendices, all included in the repository
 - A complete bilingual (EN/ZH) standalone HTML book, generated from Markdown
 - No pre-made solver: the intended workflow is inspection → inference → verification
@@ -72,7 +73,7 @@ This repository contains **all answers, keys, scoring mechanics, and generator c
 
 ## 中文摘要
 
-《残卷》是一个以文件本身为谜面的多层解谜包：从外层 ZIP 一路拆到最后一题的生成器，每一层都是真实的文件格式（ZIP、7z、zstd、tar、自定义二进制封装），并带有内置的提示与评分机制。
+《残卷》是一个以文件本身为谜面的多层解谜包：从外层 ZIP 一路拆到最后一题的生成器，每一层都是真实的文件格式（ZIP、7z、zstd、tar、自定义二进制封装），并带有大量元叙事包装、分层误导，以及内置的提示与评分机制。
 
 面向开发者，它更实际的价值是一份**可复现、带完整文档的小型语料**，可用于：
 
