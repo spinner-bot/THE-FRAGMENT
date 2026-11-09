@@ -1,91 +1,86 @@
 # THE FRAGMENT · 残卷
 
-**一个可独立完成的多层嵌套解谜包，以及它的完整解题全书。**
-*A self-contained, multi-layer puzzle package — and its complete solution book.*
+A self-contained, multi-layer puzzle package — and a reproducible artifact for studying how agents reason across unfamiliar file systems.
 
----
+## What it is
 
-## 这是什么 / What this is
+THE FRAGMENT is a public puzzle package built as a chain of nested archives, a self-describing encrypted container, mathematical data puzzles, and a generator that must be reverse-engineered. Every layer is a real format — ZIP, 7z, zstd, tar, custom binary framing — and the package ships with an in-built hint/scoring mechanic plus a complete bilingual solution book.
 
-《残卷》是一份以文件本身为谜面的解谜包。它不提供现成的解密工具，也不把规则写在明处：解题者需要从 ZIP 的第一层字节开始，逐层观察、推断、验证，沿着嵌套的压缩包、自描述的锁、数学题与生成器代码，一直走到最后一题。
+For developers, the interesting part is not the story. It is a **small, deterministic, fully documented corpus** for file-system reasoning, tool use under uncertainty, hypothesis revision, and long-horizon planning.
 
-*THE FRAGMENT is a puzzle package whose riddle is the files themselves. There is no ready-made decryption tool and no explicit rule sheet: the solver starts from the first bytes of the ZIP and works inward through nested archives, a self-describing lock, mathematical puzzles, and generator code.*
+- 12 layers, from the outer ZIP to the final generator
+- 55 solution chapters and 6 appendices, all included in the repository
+- A complete bilingual (EN/ZH) standalone HTML book, generated from Markdown
+- No pre-made solver: the intended workflow is inspection → inference → verification
 
-它同时是一份关于“结构如何承担难度”的设计样本。仓库里的解题全书不只给出答案，也保留真实解题过程中的错误路径、无效模型与提示系统的信息论。
+## Technical properties
 
-*It is also a case study in how structure itself can carry difficulty. The solution book in this repository records not only the answers, but the wrong turns, failed models, and the information economics of the hint system.*
-
----
-
-## 仓库里有什么 / What is in this repository
-
-| 路径 / Path | 内容 / Contents |
+| Property | Detail |
 |---|---|
-| `release/THE FRAGMENT.zip` | 发布包。解题从这一层开始。 / The release package. Solving starts here. |
-| `THE FRAGMENT/` | 发布包的展开副本，便于直接查看。 / An unpacked copy of the release package. |
-| `original files/` | 出题时使用的原始题目、真实答案与提示文本。 / Source puzzles, real answers, and hint text. |
-| `《THE FRAGMENT·残卷》解谜全书.html` | 单文件、双语、可离线阅读的完整解题全书。 / The complete bilingual solution book as one standalone HTML file. |
-| `docs/solution/` | 全书的 Markdown 源稿，按解题顺序分为 8 个部分与 6 个附录。 / Markdown source of the book: 8 parts and 6 appendices. |
-| `archive/chatgpt/` | 外部模型完整解题过程的归档，以及对话导出工具。 / Archived solving sessions from external models, plus export tools. |
-| `tools/` | 全书构建脚本与模板（`build_book.py`、`book/template.html`）。 / Book build script and template. |
-| `assets/`、`incipit.html` | 封面素材与封面源码。 / Cover assets and cover source. |
-| `reference/` | 本地工作副本，默认被 `.gitignore` 忽略。 / Local working copies, ignored by default. |
+| Deterministic artifacts | Every file has a size and SHA-256 recorded in the appendix |
+| Self-describing lock | `ITC2RECIPE`: marker + recipe, XOR stream over SHA-256 blocks, encrypt-then-MAC |
+| Hint economy | Hints consume score and can return `F`, “not a valid question”, or “unavailable” |
+| Reproducible docs | `python tools/build_book.py` rebuilds the 55-chapter book from `docs/solution/` |
+| Self-contained output | One offline HTML file with embedded CSS, JS, and SVG diagrams |
+| Bilingual by construction | English preludes above Chinese technical exposition; no external assets |
 
----
+## Possible uses
 
-## 从哪里开始 / Where to start
+| Use | Why it fits |
+|---|---|
+| **Agent capability testing** | Long tool-use episodes, ambiguous state, dead ends, and a measurable scoring signal |
+| **Hypothesis-revision benchmark** | The archive documents wrong statistical models; success requires reframing, not more fitting |
+| **File-format / RE teaching** | Nested containers, checksums, custom framing, obfuscated generator code |
+| **Reproducible packaging demo** | Byte-level manifests, deterministic unpacking, rebuildable documentation |
+| **Documentation engineering** | Markdown → single-file themed HTML with a small, readable build pipeline |
+| **Portfolio / write-up sample** | Design notes explain the engineering trade-offs behind each layer |
 
-**只想亲自解题？**
-下载 `release/THE FRAGMENT.zip`，然后离开这个仓库。这里的文字几乎处处是剧透。
+For an agent evaluation, the release package can be handed to a sandboxed agent as-is. Useful signals include layers reached, commands used, hint budget consumed, time to first correct inference, and whether the agent revises a wrong model instead of over-fitting it.
 
-*Just want to solve it yourself?*
-Download `release/THE FRAGMENT.zip` and leave this repository. Almost everything here is a spoiler.
+## Repository map
 
-**想核对答案或看完整复盘？**
-打开根目录的 [`《THE FRAGMENT·残卷》解谜全书.html`](《THE FRAGMENT·残卷》解谜全书.html)；只想快速对照五题答案，可直接看[附录 E](docs/solution/appendix-e-answers.md)。
+| Path | Contents |
+|---|---|
+| `release/THE FRAGMENT.zip` | The release package. Start here to solve. |
+| `THE FRAGMENT/` | Unpacked copy of the release package |
+| `original files/` | Source puzzles, real answers, and hint text |
+| `《THE FRAGMENT·残卷》解谜全书.html` | Complete bilingual solution book, single offline file |
+| `docs/solution/` | Markdown source: 8 parts + 6 appendices |
+| `archive/chatgpt/` | Full solving transcripts from external models, plus export tools |
+| `tools/` | Book builder and template |
+| `assets/`, `incipit.html` | Cover assets and cover source |
 
-*Looking for answers or a full walkthrough?*
-Open [`《THE FRAGMENT·残卷》解谜全书.html`](《THE FRAGMENT·残卷》解谜全书.html), or jump to [Appendix E](docs/solution/appendix-e-answers.md) for a quick answer check.
-
-**想理解设计意图？**
-从[解题全书目录](docs/solution/README.md)进入，最后读第 55 章“设计者复盘：结构即难度”。
-
-*Want the design rationale?*
-Start from the [solution book index](docs/solution/README.md) and finish with Chapter 55, “Designer's Review: Structure Is Difficulty.”
-
-**想重新生成全书？**
+## Quick start
 
 ```bash
+# Solve from scratch
+#   1. download release/THE FRAGMENT.zip
+#   2. do not read the rest of this repository
+
+# Read the solution book
+#   open 《THE FRAGMENT·残卷》解谜全书.html
+
+# Rebuild the solution book
 python tools/build_book.py
 ```
 
-*To rebuild the book:*
+## Spoiler warning
 
-```bash
-python tools/build_book.py
-```
+This repository contains **all answers, keys, scoring mechanics, and generator code**. The solution book is written for readers who have finished the challenge, or for developers studying how the package is built.
 
 ---
 
-## 两条阅读路线 / Two reading routes
+## 中文摘要
 
-| 按探索顺序 / In exploration order | 按文件结构 / By file structure |
-|---|---|
-| 第 1–4 章：定位与路线 | 外层 ZIP 与封面 |
-| 第 5–9 章：入口与 P1 | `incipit.7z`、`Let's go.7z`、说明书 |
-| 第 10–17 章：自描述锁 | `Q2.zst`、SHIT 层、`Q3.7z` |
-| 第 18–35 章：P2 / P3 与嵌套包 | 嵌套目录、评分表、原始五题 |
-| 第 36–50 章：五题与 Q5 逆向 | `original files/`、答案文件、生成器 |
-| 第 51–55 章：复盘与设计 | `archive/chatgpt/`、全书构建工具 |
+《残卷》是一个以文件本身为谜面的多层解谜包：从外层 ZIP 一路拆到最后一题的生成器，每一层都是真实的文件格式（ZIP、7z、zstd、tar、自定义二进制封装），并带有内置的提示与评分机制。
 
----
+面向开发者，它更实际的价值是一份**可复现、带完整文档的小型语料**，可用于：
 
-## 剧透警告 / Spoiler warning
+- **Agent 能力测试**：长程工具调用、不确定状态下的探索、错误模型修正、提示预算管理；
+- **格式与逆向教学**：嵌套容器、校验和、自定义分帧、生成器反混淆；
+- **可复现打包示例**：逐文件哈希、确定性解包、文档可重建；
+- **文档工程示例**：Markdown 生成单文件双语 HTML，构建链小而清晰。
 
-本仓库包含**全部答案、密钥、评分机制与生成器代码**。解题全书是为已完成挑战的读者、以及研究“解谜包如何设计”的读者准备的。
+解题全书与设计复盘见 [`docs/solution/`](docs/solution/README.md) 和根目录的 [`《THE FRAGMENT·残卷》解谜全书.html`](《THE FRAGMENT·残卷》解谜全书.html)。
 
-*This repository contains **all answers, keys, scoring mechanics, and generator code**. The solution book is intended for readers who have finished the challenge, or who want to study how a puzzle package is designed.*
-
----
-
-<p align="center"><sub>THE FRAGMENT · 残卷 · <a href="README.md">封面 README</a> · <a href="docs/solution/README.md">解题全书</a> · <a href="《THE FRAGMENT·残卷》解谜全书.html">单文件版本</a></sub></p>
+> 本仓库包含全部答案与生成器代码；未完成挑战者请先只使用 `release/THE FRAGMENT.zip`。
