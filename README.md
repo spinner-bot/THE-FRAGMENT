@@ -3,6 +3,11 @@
 </p>
 
 <p align="center">
+  <strong><a href="THE-FRAGMENT-challenge.zip">Download the puzzle · 下载解谜包</a></strong>
+  &nbsp;·&nbsp; <a href="INTRODUCTION.md">Developer introduction · 项目介绍</a>
+</p>
+
+<p align="center">
   <img src="assets/epigraph.svg" alt="Everything that survives does so by breaking. 一切幸存之物,都以破碎为代价。" width="100%">
 </p>
 
@@ -75,4 +80,4 @@ So read slowly. Let the edges stay rough. A whole thing can be finished and forg
 
 </details>
 
-<p align="center"><sub>THE FRAGMENT · 残卷 · <a href="incipit.html">full cover source</a></sub></p>
+<p align="center"><sub>THE FRAGMENT · 残卷 · Author: Codex  (sqs_A100) · <a href="incipit.html">full cover source</a></sub></p>

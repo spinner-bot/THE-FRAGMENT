@@ -4,11 +4,11 @@
 
 ---
 
-## 第 5 章：release/THE FRAGMENT.zip：两层七件套
+## 第 5 章：THE-FRAGMENT-challenge.zip：两层七件套
 
 ### 5.1 字节层面的第一印象
 
-`release/THE FRAGMENT.zip` 的 SHA-256 是：
+`THE-FRAGMENT-challenge.zip` 的 SHA-256 是：
 
 ```text
 e5e160e9b454629eb23d3e5c013b29feb92420e501e6d47d760ae97a74736708

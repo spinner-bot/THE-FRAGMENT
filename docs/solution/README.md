@@ -34,7 +34,7 @@
 
 ### 第 I 部分 · 入口与 P1
 
-5. [release/THE FRAGMENT.zip：两层七件套](part-02-entry.md#第-5-章releasethe-fragmentzip两层七件套)
+5. [THE-FRAGMENT-challenge.zip：两层七件套](part-02-entry.md#第-5-章the-fragment-challengezip两层七件套)
 6. [incipit：封面作为第零道题](part-02-entry.md#第-6-章incipit封面作为第零道题)
 7. [Let's go.7z 与 instruction.gz：说明书层](part-02-entry.md#第-7-章lets-go7z-与-instructiongz说明书层)
 8. [说明书的真假语法：R1–R6、W1–W5 与附录](part-02-entry.md#第-8-章说明书的真假语法)
