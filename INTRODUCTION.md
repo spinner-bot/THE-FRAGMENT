@@ -2,6 +2,10 @@
 
 A self-contained, multi-layer puzzle package — and a reproducible artifact for studying how agents reason across unfamiliar file systems.
 
+**Author:** Codex  (sqs_A100)
+
+**Start the challenge:** [Download `THE-FRAGMENT-challenge.zip`](THE-FRAGMENT-challenge.zip). The repository also contains the complete solution, so avoid opening the other files if you want to solve it unaided.
+
 ## What it is
 
 THE FRAGMENT is a public puzzle package built as a chain of nested archives, a self-describing encrypted container, mathematical data puzzles, and a generator that must be reverse-engineered. Every layer is a real format — ZIP, 7z, zstd, tar, custom binary framing — and the package ships with an in-built hint/scoring mechanic plus a complete bilingual solution book.
@@ -21,7 +25,7 @@ For developers, the interesting part is not the story. It is a **small, determin
 | Deterministic artifacts | Every file has a size and SHA-256 recorded in the appendix |
 | Self-describing lock | `ITC2RECIPE`: marker + recipe, XOR stream over SHA-256 blocks, encrypt-then-MAC |
 | Hint economy | Hints consume score and can return `F`, “not a valid question”, or “unavailable” |
-| Reproducible docs | `python tools/build_book.py` rebuilds the 55-chapter book from `docs/solution/` |
+| Reproducible docs | Install `requirements.txt`, then run `python3 tools/build_book.py` to rebuild the 55-chapter book from `docs/solution/` |
 | Self-contained output | One offline HTML file with embedded CSS, JS, and SVG diagrams |
 | Bilingual by construction | English preludes above Chinese technical exposition; no external assets |
 
@@ -42,7 +46,7 @@ For an agent evaluation, the release package can be handed to a sandboxed agent 
 
 | Path | Contents |
 |---|---|
-| `release/THE FRAGMENT.zip` | The release package. Start here to solve. |
+| [`THE-FRAGMENT-challenge.zip`](THE-FRAGMENT-challenge.zip) | The release package. Start here to solve. |
 | `THE FRAGMENT/` | Unpacked copy of the release package |
 | `original files/` | Source puzzles, real answers, and hint text |
 | `《THE FRAGMENT·残卷》解谜全书.html` | Complete bilingual solution book, single offline file |
@@ -55,14 +59,15 @@ For an agent evaluation, the release package can be handed to a sandboxed agent 
 
 ```bash
 # Solve from scratch
-#   1. download release/THE FRAGMENT.zip
+#   1. download THE-FRAGMENT-challenge.zip
 #   2. do not read the rest of this repository
 
 # Read the solution book
 #   open 《THE FRAGMENT·残卷》解谜全书.html
 
 # Rebuild the solution book
-python tools/build_book.py
+python3 -m pip install -r requirements.txt
+python3 tools/build_book.py
 ```
 
 ## Spoiler warning
@@ -84,4 +89,4 @@ This repository contains **all answers, keys, scoring mechanics, and generator c
 
 解题全书与设计复盘见 [`docs/solution/`](docs/solution/README.md) 和根目录的 [`《THE FRAGMENT·残卷》解谜全书.html`](《THE FRAGMENT·残卷》解谜全书.html)。
 
-> 本仓库包含全部答案与生成器代码；未完成挑战者请先只使用 `release/THE FRAGMENT.zip`。
+> 本仓库包含全部答案与生成器代码；未完成挑战者请先只使用根目录的 `THE-FRAGMENT-challenge.zip`。
