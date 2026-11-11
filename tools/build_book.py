@@ -133,7 +133,7 @@ CHAPTER_META = {
         "The vocabulary of the lock: P and Q, recipe, payload, TAG, D and K, and the difference between a key and an answer."),
     4: ("The Master Route",
         "The decision tree from the first ZIP byte to the Q5 generator, with the shortest path and the main forks marked."),
-    5: ("THE-FRAGMENT-challenge.zip: Two Layers, Seven Pieces",
+    5: ("THE FRAGMENT: Two Layers, Seven Pieces",
         "The outer archive is not a wrapper but a first puzzle: two layers, seven pieces, and an entry order that matters."),
     6: ("incipit: The Cover as Chapter Zero",
         "The cover is chapter zero: a readable surface that sets the tone and quietly explains how to stand before the fragment."),
@@ -664,7 +664,7 @@ def diagram_entry() -> str:
   <text x="40" y="28" class="label" fill="#8f7345">THE OUTER ZIP: TWO ENTRIES, NO README</text>
   <rect x="40" y="58" width="250" height="170" rx="2" fill="rgba(201,168,106,.025)" stroke="rgba(201,168,106,.38)"/>
   <text x="58" y="84" class="label">repository root</text>
-  <text x="58" y="108" class="label-b" fill="#e9dfc9">THE-FRAGMENT-challenge.zip</text>
+  <text x="58" y="108" class="label-b" fill="#e9dfc9">THE FRAGMENT</text>
   <text x="58" y="132" class="zhlabel">28,828 bytes · L0</text>
   <rect x="74" y="150" width="182" height="52" rx="2" fill="rgba(201,168,106,.035)" stroke="rgba(201,168,106,.22)"/>
   <text x="88" y="172" class="label">THE FRAGMENT/</text>

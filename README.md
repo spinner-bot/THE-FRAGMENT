@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-  <strong><a href="THE-FRAGMENT-challenge.zip">Download the puzzle · 下载解谜包</a></strong>
+  <strong><a href="THE%20FRAGMENT">Download the puzzle · 下载解谜包</a></strong>
   &nbsp;·&nbsp; <a href="INTRODUCTION.md">Developer introduction · 项目介绍</a>
 </p>
 

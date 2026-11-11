@@ -116,7 +116,7 @@
 
 ### 2.1 从最外层开始
 
-`THE-FRAGMENT-challenge.zip` 是 28,828 字节。它的中央目录只有三项：
+`THE FRAGMENT` 是 28,828 字节。它的中央目录只有三项：
 
 ```text
 THE FRAGMENT/
@@ -217,7 +217,7 @@ puzzle/
 
 | 阶段 | 输入 | 操作 | 输出 | 钥匙/答案 |
 |---|---|---|---|---|
-| 0 | `THE-FRAGMENT-challenge.zip` | 解 ZIP | `incipit.7z`、`Let's go.7z` | 无 |
+| 0 | `THE FRAGMENT` | 解 ZIP | `incipit.7z`、`Let's go.7z` | 无 |
 | 1 | `incipit.7z` | 解 7z | `incipit.html` | 无 |
 | 2 | `Let's go.7z` | 解 7z | `instruction.gz`、Q1–Q3 | 无 |
 | 3 | `instruction.gz` | 解 gzip | HTML 说明书 | 无 |
@@ -262,7 +262,7 @@ puzzle/
 
 | # | 探索动作（时间线） | 打开/读取的文件 | 结构位置 | 产出 / 下一把钥匙 | 备注 |
 |---:|---|---|---|---|---|
-| 0 | 收到发布包 | `THE-FRAGMENT-challenge.zip` | L0 | — | 28,828 字节 |
+| 0 | 收到发布包 | `THE FRAGMENT` | L0 | — | 28,828 字节 |
 | 1 | 解外层 ZIP | `THE FRAGMENT/` | L1 | `incipit.7z`、`Let's go.7z` | 只有两个入口 |
 | 2 | 读封面 | `incipit.7z` → `incipit.html` | L2 | 主题与阅读姿态 | **不含答案，但不应跳过** |
 | 3 | 解行动包 | `Let's go.7z` | L2 | `instruction.gz`、`Q1.tar`、`Q2.zst`、`Q3.7z` | 四个文件对应四种操作 |
@@ -390,7 +390,7 @@ puzzle/
 ### 4.1 一张决策树
 
 ```text
-拿到 THE-FRAGMENT-challenge.zip
+拿到 THE FRAGMENT
 │
 ├─ 先看中央目录：两个文件
 │  ├─ incipit.7z → 读封面（不产生钥匙）
