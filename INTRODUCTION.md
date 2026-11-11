@@ -47,7 +47,6 @@ For an agent evaluation, the release package can be handed to a sandboxed agent 
 | Path | Contents |
 |---|---|
 | [`THE FRAGMENT`](THE%20FRAGMENT) | The release package. Start here to solve. |
-| `THE FRAGMENT/` | Unpacked copy of the release package |
 | `original files/` | Source puzzles, real answers, and hint text |
 | `《THE FRAGMENT·残卷》解谜全书.html` | Complete bilingual solution book, single offline file |
 | `docs/solution/` | Markdown source: 8 parts + 6 appendices |

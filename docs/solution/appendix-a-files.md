@@ -21,7 +21,7 @@ THE FRAGMENT                 28,828
 | `THE FRAGMENT/incipit.7z` | 4,626 | `b26fad184df23dfe5c040453136814cd912ba0534853d0df9ced2f15badf837e` |
 | `THE FRAGMENT/Let's go.7z` | 23,617 | `20a71b9d3d5814f831605927a10b4fae4d0d053e552c81408ab8d31349f515b8` |
 
-`THE FRAGMENT` 是仓库根目录的正式发布包；`THE FRAGMENT/` 是同一结构的展开副本，便于直接查看。
+`THE FRAGMENT` 是仓库根目录的正式发布包；上表中的 `THE FRAGMENT/` 指压缩包内部的目录结构，解压后即可看到（仓库中不再单独保留展开副本）。
 
 ---
 
