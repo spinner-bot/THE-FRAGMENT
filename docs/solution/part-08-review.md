@@ -39,7 +39,7 @@
 第一轮（11:29:21）已经列出了：
 
 ```text
-THE-FRAGMENT-challenge.zip
+THE FRAGMENT
 └── THE FRAGMENT/
     ├── incipit.7z
     └── Let's go.7z
@@ -307,7 +307,7 @@ ChatGPT 在早期把 Q5 描述为：
 事后看，从 ZIP 到 Q5 答案的最短路径是：
 
 ```text
-THE-FRAGMENT-challenge.zip
+THE FRAGMENT
 → incipit.7z / incipit.html            （读叙事，确认入口）
 → Let's go.7z / instruction.gz         （读规则，确认答案链）
 → P1：5050
@@ -498,7 +498,7 @@ Q5 是这一思想的极端形式：数据里充满了规律，但只有一条�
 
 ### 55.10 全书结语
 
-从 `THE-FRAGMENT-challenge.zip` 的第一层字节，到 Q5 生成器的最后一行，这个包用一条完整的链把“叙事、结构、数学、逆向”串在一起。
+从 `THE FRAGMENT` 的第一层字节，到 Q5 生成器的最后一行，这个包用一条完整的链把“叙事、结构、数学、逆向”串在一起。
 
 本书尽量保留了这条链上的每一个岔路：错误的列统计、被跳过的封面、被当成答案的嘲讽文本、被拟合出来的四阶差分。它们不是失败记录，而是题目的一部分。
 

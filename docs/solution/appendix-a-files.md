@@ -9,7 +9,7 @@
 ## A.1 发布层
 
 ```text
-THE-FRAGMENT-challenge.zip                 28,828
+THE FRAGMENT                 28,828
 └── THE FRAGMENT/
     ├── incipit.7z                         4,626
     └── Let's go.7z                       23,617
@@ -17,11 +17,11 @@ THE-FRAGMENT-challenge.zip                 28,828
 
 | 文件 | 大小 | SHA-256 |
 |---|---:|---|
-| `THE-FRAGMENT-challenge.zip` | 28,828 | `e5e160e9b454629eb23d3e5c013b29feb92420e501e6d47d760ae97a74736708` |
+| `THE FRAGMENT` | 28,828 | `e5e160e9b454629eb23d3e5c013b29feb92420e501e6d47d760ae97a74736708` |
 | `THE FRAGMENT/incipit.7z` | 4,626 | `b26fad184df23dfe5c040453136814cd912ba0534853d0df9ced2f15badf837e` |
 | `THE FRAGMENT/Let's go.7z` | 23,617 | `20a71b9d3d5814f831605927a10b4fae4d0d053e552c81408ab8d31349f515b8` |
 
-`THE-FRAGMENT-challenge.zip` 是仓库根目录的正式发布包；`THE FRAGMENT/` 是同一结构的展开副本，便于直接查看。
+`THE FRAGMENT` 是仓库根目录的正式发布包；`THE FRAGMENT/` 是同一结构的展开副本，便于直接查看。
 
 ---
 
@@ -222,7 +222,7 @@ puzzle/
 
 | 文件/目录 | 首次出现 | 详细讨论 |
 |---|---|---|
-| `THE-FRAGMENT-challenge.zip` | 第 5 章 | 第 5 章、2.7 节 |
+| `THE FRAGMENT` | 第 5 章 | 第 5 章、2.7 节 |
 | `THE FRAGMENT/incipit.7z` | 第 5 章 | 第 6 章 |
 | `THE FRAGMENT/Let's go.7z` | 第 5 章 | 第 7 章 |
 | `incipit/incipit.html` | 第 6 章 | 第 6 章、附录 F |
@@ -271,13 +271,13 @@ puzzle/
 
 ```bash
 # 单个文件
-sha256sum "THE-FRAGMENT-challenge.zip"
+sha256sum "THE%20FRAGMENT"
 
 # 包内所有文件（先解压到空目录）
 find unpacked -type f -print0 | xargs -0 sha256sum
 
 # Windows PowerShell
-Get-FileHash "THE-FRAGMENT-challenge.zip" -Algorithm SHA256
+Get-FileHash "THE%20FRAGMENT" -Algorithm SHA256
 ```
 
 如果要验证两个诱饵答案是否相同：

@@ -23,7 +23,7 @@
 
 核心内容：
 
-- 外层：`THE-FRAGMENT-challenge.zip` → `incipit.7z` + `Let's go.7z`。
+- 外层：`THE FRAGMENT` → `incipit.7z` + `Let's go.7z`。
 - 中层：`instruction.gz` + `Q1.tar` + `Q2.zst` + `Q3.7z`。
 - 内层：P1 → 5050 → P2 锁 → K → P3 锁 → `.entrance` + `P1-02C` → 原始五题。
 - 三条链：答案链（5050 → K）、结构链（压缩格式嵌套）、叙事链（残卷/说明书/警告）。
@@ -54,7 +54,7 @@
 
 ## 第 I 部分 · 入口与 P1（第 5–9 章）
 
-### 第 5 章 THE-FRAGMENT-challenge.zip：两层七件套
+### 第 5 章 THE FRAGMENT：两层七件套
 
 回答：最外层 ZIP 里到底有什么。
 

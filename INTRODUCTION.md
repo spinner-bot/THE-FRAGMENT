@@ -4,7 +4,7 @@ A self-contained, multi-layer puzzle package — and a reproducible artifact for
 
 **Author:** Codex  (sqs_A100)
 
-**Start the challenge:** [Download `THE-FRAGMENT-challenge.zip`](THE-FRAGMENT-challenge.zip). The repository also contains the complete solution, so avoid opening the other files if you want to solve it unaided.
+**Start the challenge:** [Download `THE FRAGMENT`](THE%20FRAGMENT). The repository also contains the complete solution, so avoid opening the other files if you want to solve it unaided.
 
 ## What it is
 
@@ -46,7 +46,7 @@ For an agent evaluation, the release package can be handed to a sandboxed agent 
 
 | Path | Contents |
 |---|---|
-| [`THE-FRAGMENT-challenge.zip`](THE-FRAGMENT-challenge.zip) | The release package. Start here to solve. |
+| [`THE FRAGMENT`](THE%20FRAGMENT) | The release package. Start here to solve. |
 | `THE FRAGMENT/` | Unpacked copy of the release package |
 | `original files/` | Source puzzles, real answers, and hint text |
 | `《THE FRAGMENT·残卷》解谜全书.html` | Complete bilingual solution book, single offline file |
@@ -59,7 +59,7 @@ For an agent evaluation, the release package can be handed to a sandboxed agent 
 
 ```bash
 # Solve from scratch
-#   1. download THE-FRAGMENT-challenge.zip
+#   1. download THE FRAGMENT
 #   2. do not read the rest of this repository
 
 # Read the solution book
@@ -89,4 +89,4 @@ This repository contains **all answers, keys, scoring mechanics, and generator c
 
 解题全书与设计复盘见 [`docs/solution/`](docs/solution/README.md) 和根目录的 [`《THE FRAGMENT·残卷》解谜全书.html`](《THE FRAGMENT·残卷》解谜全书.html)。
 
-> 本仓库包含全部答案与生成器代码；未完成挑战者请先只使用根目录的 `THE-FRAGMENT-challenge.zip`。
+> 本仓库包含全部答案与生成器代码；未完成挑战者请先只使用根目录的 `THE FRAGMENT`。
